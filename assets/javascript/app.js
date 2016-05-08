@@ -1,38 +1,91 @@
-var shows = ["Buffy", "Gilmore Girls", "Firefly", "Burn NOtice", "Veronica Mars", "New Girl", "Muppets", "Sherlock"];
+$(document).ready(function() {
 
 
-function renderButtons() {
+
+
+
+	var app = {
+	shows: ["Buffy", "Gilmore Girls", "Firefly", "Burn NOtice", "Veronica Mars", "New Girl", "Muppets", "Sherlock"],
+
+	renderButtons: function() {
 	$("#buttonsView").empty();
 
-	for(var i = 0; i < shows.length; i++) {
-		var a = $("<button>");
-		a.addClass("wave")
-		a.addClass(" btn show");
-		a.attr("data-name", shows[i]);
-		a.text(shows[i]);
-		$("#buttonsView").append(a);
+		for(var i = 0; i < app.shows.length; i++) {
+			var a = $("<button>");
+			$(a).addClass("waves-effect waves-light btn show");
+			a.addClass("show");
+			a.addClass("btn waves-effect waves-light")
+			//$(a).addClass("waves-effect waves-light btn show");
+			$(a).attr("data-name", app.shows[i]);
+			$(a).text(app.shows[i]);
+			$("#buttonsView").append(a);
+		};
 	}
-};
 
 
 
-$(".add").on("click", function() {
-	var newShow = $("#newShow").val().trim();
-	console.log(newShow);
-	shows.push(newShow);
-	renderButtons();
-	return false;
-})
 
-$(".show").on("click", function() {
-	var whatever = $(".data-name").val();//??
-	var queryName = whatever.replace(" ", "+");
-	var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + queryName + "&api_key=dc6zaTOxFJmzC";
 
-	$.ajax({url: queryUrl, method:'GET'}).done(function(response) {
-		console.log(response.rating)
-		//response.rating
+	};
+
+	$(".add").click(function() {
+		var newShow = $("#newShow").val().trim();
+		console.log(newShow);
+		app.shows.push(newShow);
+		app.renderButtons();
+		return false;
 	});
+
+	$("button").click(function() {
+		console.log("clicked");
+	});
+
+	$(".show").click(function() {
+		console.log("hit");
+	//var whatever = $(this).attr("data-name");
+	//console.log(whatever);
+	//var queryName = whatever.replace(" ", "+");
+	//var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + queryName + "&api_key=dc6zaTOxFJmzC";
+
+	//$.ajax({url: queryUrl, method:'GET'}).done(function(response) {
+		//console.log(response);
+		//console.log(response.data.rating);
+		//response.rating
+	//});
+	});
+
+
+
+
+
+
+	$(".add").click(function() {
+		var newShow = $("#newShow").val().trim();
+		console.log(newShow);
+		app.shows.push(newShow);
+		app.renderButtons();
+		return false;
+	});
+
+	$("button").click(function() {
+		console.log("clicked");
+	});
+
+	$(".show").on("click", function() {
+		console.log("hit");
+	//var whatever = $(this).attr("data-name");
+	//console.log(whatever);
+	//var queryName = whatever.replace(" ", "+");
+	//var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + queryName + "&api_key=dc6zaTOxFJmzC";
+
+	//$.ajax({url: queryUrl, method:'GET'}).done(function(response) {
+		//console.log(response);
+		//console.log(response.data.rating);
+		//response.rating
+	//});
+	});
+
+
 });
 
 
