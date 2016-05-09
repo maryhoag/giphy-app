@@ -83,7 +83,13 @@ $(document).ready(function() {
 		//console.log(response.data.rating);
 		//response.rating
 	//});
+
+	
 	});
+	//Carol is a genius
+	$(document).on('click', '.show', function () {
+        console.log('it works!');
+    });
 
 
 });
