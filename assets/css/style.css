@@ -10,3 +10,22 @@ h1 {
 #buttonView {
 	font-family: 'Dosis', sans-serif;
 }
+
+#gifGallery {
+	float:right;
+}
+
+div.giphy {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+img {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
+.gif-rating {
+    display: block;
+}
