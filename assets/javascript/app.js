@@ -14,12 +14,12 @@ $(document).ready(function() {
 			var a = $("<button>");
 			$(a).addClass("waves-effect waves-light btn show");
 			a.addClass("show");
-			a.addClass("btn waves-effect waves-light")
+			a.addClass("btn waves-effect waves-light");
 			//$(a).addClass("waves-effect waves-light btn show");
 			$(a).attr("data-name", app.shows[i]);
 			$(a).text(app.shows[i]);
 			$("#buttonsView").append(a);
-		};
+		}
 	}
 
 
@@ -75,6 +75,11 @@ $(document).ready(function() {
 				var image = $("<img>");
 				var image_url = response.data[i].images.fixed_height_small_still.url;
 				var gif_url = response.data[i].images.fixed_height_small.mp4;
+				console.log(response.data[i].images.fixed_height_small.mp4);
+				console.log(gif_url);
+				console.log(image_url);
+				$(image).attr("data-still", "image_url");
+				$(image).attr("data-moving", "gif_url");
 				$(image).attr("src", image_url);
 				$(image).attr("display", "inline");
 				$(image).attr("data-state", "still");
@@ -104,16 +109,20 @@ $(document).ready(function() {
 
 
 	$(document).on("click", ".giphy", function() {
+		var state = $(this).attr("data-state");
+		console.log(this);
+		console.log(state);
 
 
-		if(this.data-state == "still") {
-			$(this).attr("src", gif_url);
+		if(state == "still") {
+			console.log(state);
+			$(this).attr("src", $(this).data("moving"));
 			$(this).attr("data-state", "moving");
 		} else {
-			$(this).attr("src", image_url);
+			$(this).attr("src", $(this).data("still"));
 			$(this).attr("data-state", "still");
 
-		}
+		};
 	});
 
 });
