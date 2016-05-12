@@ -64,7 +64,7 @@ $(document).ready(function() {
 				console.log(response.data[i].bitly_url);
 
 				//change to a span or display in line
-				var b = $("<div>").addClass("giphy section");
+				var b = $("<div>").addClass("gif_div section");
 
 
 				//var test = $("<p>");
@@ -78,11 +78,12 @@ $(document).ready(function() {
 				console.log(response.data[i].images.fixed_height_small.mp4);
 				console.log(gif_url);
 				console.log(image_url);
-				$(image).attr("data-still", "image_url");
-				$(image).attr("data-moving", "gif_url");
+				$(image).attr("data-fixed", image_url);
+				$(image).attr("data-animated", gif_url);
 				$(image).attr("src", image_url);
 				$(image).attr("display", "inline");
-				$(image).attr("data-state", "still");
+				$(image).attr("data-state", "fixed");
+				$(image).addClass("giphy");
 				//$(image).addClass("divider section");
 
 				$(b).append(image);
@@ -109,18 +110,19 @@ $(document).ready(function() {
 
 
 	$(document).on("click", ".giphy", function() {
-		var state = $(this).attr("data-state");
+		var status = $(this).attr("data-state");
 		console.log(this);
-		console.log(state);
+		console.log(status);
+		
 
 
-		if(state == "still") {
-			console.log(state);
-			$(this).attr("src", $(this).data("moving"));
-			$(this).attr("data-state", "moving");
+		if(status == "fixed") {
+			console.log(status);
+			$(this).attr("src", $(this).data("animated"));
+			$(this).attr("data-state", "animated");
 		} else {
-			$(this).attr("src", $(this).data("still"));
-			$(this).attr("data-state", "still");
+			$(this).attr("src", $(this).data("fixed"));
+			$(this).attr("data-state", "fixed");
 
 		};
 	});
