@@ -74,7 +74,8 @@ $(document).ready(function() {
 
 				var image = $("<img>");
 				var image_url = response.data[i].images.fixed_height_small_still.url;
-				var gif_url = response.data[i].images.fixed_height_small.mp4;
+				var gif_url = response.data[i].images.fixed_height.url;
+
 				console.log(response.data[i].images.fixed_height_small.mp4);
 				console.log(gif_url);
 				console.log(image_url);
